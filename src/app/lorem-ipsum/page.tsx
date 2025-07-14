@@ -13,6 +13,7 @@ export default function Page(){
     const [paragraphCount, setParagraphCount] = useState(2);
     const [textAlignment, setTextAlignment] = useState<"left" | "right" | "center">("left");
     const [isCopied, setIsCopied] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     function manageMultipleParagraphs(sentenceCount: number, avgSentenceLength: number, paragraphCount: number): string {
         const paragraphs = generateMultipleParagraphs(sentenceCount, avgSentenceLength, paragraphCount);
@@ -55,7 +56,7 @@ export default function Page(){
                             />
                             <input type="number" min={1} max={20} value={sentenceCount} 
                                 onChange={(e) => setSentenceCount(Number(e.target.value))}
-                                className="w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                className="w-12 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner" 
                             />
                         </div>
                     </div>
@@ -72,7 +73,7 @@ export default function Page(){
                             />
                             <input type="number" min={1} max={20} value={avgSentenceLength} 
                                 onChange={(e) => setAvgSentenceLength(Number(e.target.value))}
-                                className="w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                className="w-12 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner" 
                             />
                         </div>
                     </div>
@@ -89,7 +90,7 @@ export default function Page(){
                             />
                             <input type="number" min={1} max={20} value={paragraphCount} 
                                 onChange={(e) => setParagraphCount(Number(e.target.value))}
-                                className="w-16 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                className="w-12 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner" 
                             />
                         </div>
                     </div>
@@ -118,25 +119,35 @@ export default function Page(){
                 </div>
 
                 <hr className="border-neutral-200"/>
-
-                <div className="flex">
-                    <button onClick={() => setTextAlignment("left")} className={`${ textAlignment === "left" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md  transition-colors duration-100 ease`}>
-                        <img className="h-8 w-8" src={'/icons/align-left.svg'}/>
-                    </button>
-                    <button onClick={() => setTextAlignment("center")}  className={`${ textAlignment === "center" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}>
-                        <img className="h-8 w-8" src={'/icons/align-center.svg'}/>
+                
+                <div className="flex w-full justify-between">
+                    <div className="flex">
+                        <button onClick={() => setTextAlignment("left")} className={`${ textAlignment === "left" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md  transition-colors duration-100 ease`}>
+                            <img className="h-8 w-8" src={'/icons/align-left.svg'}/>
                         </button>
-                    <button onClick={() => setTextAlignment("right")} className={`${ textAlignment === "right" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}>
-                        <img className="h-8 w-8" src={'/icons/align-right.svg'}/>
+                        <button onClick={() => setTextAlignment("center")}  className={`${ textAlignment === "center" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}>
+                            <img className="h-8 w-8" src={'/icons/align-center.svg'}/>
+                            </button>
+                        <button onClick={() => setTextAlignment("right")} className={`${ textAlignment === "right" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}>
+                            <img className="h-8 w-8" src={'/icons/align-right.svg'}/>
+                        </button>
+                    </div>
+
+                    <button className={`${ isMobile ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}
+                            onClick={() => setIsMobile(!isMobile)}>
+                        <img className="h-7 w-7" src={'/icons/mobile.svg'}/>
                     </button>
                 </div>
+
             </div>
             <div className="flex flex-col">
                 <p className={`${ isCopied ? "text-green-700" : "text-white"} ml-auto px-3`}>Copied</p>
                 <button dangerouslySetInnerHTML={{__html: loremIpsum}}
                 onClick={handleCopy}
-                className={`px-4 py-3 max-w-2xl text-wrap bg-white border-2 border-neutral-200 rounded-md text-black`}
-                style={{ textAlign: textAlignment }}
+                className={`px-4 py-3 text-wrap bg-white border-2 border-neutral-200 rounded-md text-black`}
+                style={{ textAlign: textAlignment,
+                    maxWidth: isMobile ? "36ch" : "672px",
+                 }}
                 />
             </div>
         </div>
