@@ -4,7 +4,7 @@ import { contributers, utilities } from "../constants/index.js"
 import Footer from "@/components/Footer";
 import SearchInput from "@/components/SearchInput";
 
-export default async function Home({ searchParams }: { searchParams: Promise<any> }) {
+export default async function Home({ searchParams }: { searchParams: Promise<{ query?: string | string[] }> }) {
 
   // TODO: Add a search bar to filter tools
   const awaitedSearchParams = await searchParams;
