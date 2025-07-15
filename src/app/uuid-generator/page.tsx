@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { generateUUID } from "../../utils/UUID/generators";
 import CopyBlock from "@/components/CopyBlock";
 import BackToHome from "@/components/BackToHome";
+import Footer from "@/components/Footer";
 
 export default function Page(){
     const [uuid, setUUID] = useState("");
@@ -33,8 +34,8 @@ export default function Page(){
     }
 
     return (
-        <div className="p-4 flex flex-col min-h-screen items-center">
-            <div className="flex flex-col min-h-screen items-center justify-center max-w-[500px] w-full">
+        <div className="p-4 flex flex-col min-h-screen items-center justify-between">
+            <div className="flex flex-col items-center justify-center max-w-[500px] w-full mt-36">
                 <BackToHome className="md:ml-12"/>
                 <h1 className="text-2xl font-bold mb-4">UUID Generator</h1>
                 <button 
@@ -47,6 +48,8 @@ export default function Page(){
                     <CopyBlock isCopied={isCopied} content={uuid} handleCopy={handleCopy} />
                 )}
             </div>
+
+            <Footer/>
         </div>
     );
 }

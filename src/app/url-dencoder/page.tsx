@@ -3,6 +3,8 @@ import { useState } from "react";
 import { buttonStyles, HeadingStyles } from "@/styles/styles";
 import CopyBlock from "@/components/CopyBlock";
 import BackToHome from "@/components/BackToHome";
+import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 
 export default function Page(){
 
@@ -34,8 +36,8 @@ export default function Page(){
     }
 
     return (
-        <main className="bg-white text-neutral-950 pt-4 flex items-center justify-center min-h-screen px-4">
-            <div className="min-h-screen flex flex-col items-center justify-center max-w-[500px] w-full">
+        <main className="bg-white text-neutral-950 pt-4 pb-2 flex flex-col items-center justify-between min-h-screen px-4">
+            <div className="flex flex-col items-center justify-center max-w-[500px] w-full mt-36">
                 <BackToHome/>
                 <h2 className={`${HeadingStyles.h2} w-fit mx-auto`}>URL Decoder/Encoder</h2>
                 <p className="text-sm text-neutral-500 mb-6">A simple tool to decode or encode URLs.</p>
@@ -67,6 +69,15 @@ export default function Page(){
                     
                 </div>
             </div>
+
+            <footer className="w-full max-w-[500px] mx-auto flex text-sm text-neutral-400 justify-between items-baseline">
+                <p>developer-toolkit</p>
+                <Link className="flex gap-1 items-center hover:underline"
+                    href={"https://github.com/arjunsharmahehe/developer-toolkit"}>
+                        Github 
+                        <ExternalLink className="size-3"/>
+                </Link>
+            </footer>
         </main>
     )
 }

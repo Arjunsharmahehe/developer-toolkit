@@ -1,6 +1,7 @@
 import { MoonIcon } from "lucide-react";
 import ToolCard from "../components/ToolCard";
 import { contributers, utilities } from "../constants/index.js"
+import Footer from "@/components/Footer";
 
 export default function Home() {
 
@@ -8,7 +9,7 @@ export default function Home() {
   // TODO: Add a search bar to filter tools
 
   return (
-    <main className="bg-white text-neutral-900  px-4 py-4 min-h-svh">
+    <main className="bg-white text-neutral-900  px-4 py-4 min-h-svh flex flex-col justify-between">
       <div className="max-w-[500px] mx-auto flex flex-col items-center justify-between">
         
         <div>
@@ -45,6 +46,8 @@ export default function Home() {
         </div>
 
       </div>
+
+      <Footer/>
 
     </main>
   );
