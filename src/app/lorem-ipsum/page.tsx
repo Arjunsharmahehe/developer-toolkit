@@ -43,7 +43,7 @@ export default function Page(){
     return (
         <div className="flex flex-col justify-between items-center gap-8 bg-white min-h-screen px-8 pt-4 pb-2">
             <div className="flex flex-col items-center">    
-                <div className="flex flex-col max-w-md mx-auto p-6 bg-white text-black rounded-lg shadow-lg gap-3">
+                <div className="flex flex-col max-w-md mx-auto p-6 bg-white text-black border-b-neutral-200 border-b-2 gap-3">
                     <BackToHome className="mb-12"/>
                     <h2 className={`${HeadingStyles.h2} w-fit mx-auto`}>Lorem Ipsum</h2>
                     <div className="flex flex-col gap-2">
