@@ -2,11 +2,18 @@ import { MoonIcon } from "lucide-react";
 import ToolCard from "../components/ToolCard";
 import { contributers, utilities } from "../constants/index.js"
 import Footer from "@/components/Footer";
+import SearchInput from "@/components/SearchInput";
 
-export default function Home() {
-
+export default function Home({ searchParams }: { searchParams?: { query?: string } }) {
 
   // TODO: Add a search bar to filter tools
+  const query = searchParams?.query || "";
+
+  const filteredUtilities = utilities.filter((utility) => 
+    utility.name.toLowerCase().includes(query.toLowerCase()) ||
+    utility.description.toLowerCase().includes(query.toLowerCase())
+  );
+
 
   return (
     <main className="bg-white text-neutral-900  px-4 py-4 min-h-svh flex flex-col justify-between">
@@ -37,11 +44,11 @@ export default function Home() {
 
           <h2 className="flex justify-between items-baseline w-full">
             <span className="font-semibold text-xl">Tools</span>
-            <p className="font-normal text-sm text-neutral-400">Search</p>
+            <SearchInput/>
           </h2>
 
           <div className="flex flex-col gap-4 w-full">
-            {utilities.map((utility) => <ToolCard key={utility.id} {...utility}/>)}
+            {filteredUtilities.length > 0 ? filteredUtilities.map((utility) => <ToolCard key={utility.id} {...utility}/>) : <p className="text-neutral-400 mx-auto">No tools found</p>}
           </div>
         </div>
 
