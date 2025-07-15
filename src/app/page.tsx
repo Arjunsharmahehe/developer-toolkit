@@ -4,7 +4,7 @@ import { contributers, utilities } from "../constants/index.js"
 import Footer from "@/components/Footer";
 import SearchInput from "@/components/SearchInput";
 
-export default function Home({ searchParams }: { searchParams?: { query?: string } }) {
+export default function Home({ searchParams }: { searchParams?: { [key: string]: string | undefined; } }) {
 
   // TODO: Add a search bar to filter tools
   const query = searchParams?.query || "";
