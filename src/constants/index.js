@@ -51,10 +51,10 @@ export const utilities = [
 export const contributers = [
     {
         name: "Arjun(owner)",
-        link: ""
+        link: "https://arjunsharmahehe.netlify.app/"
     },
     {
         name: "Anushka",
-        link: ""
+        link: "https://anushkasharma.netlify.app/"
     }
 ]

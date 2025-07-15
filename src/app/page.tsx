@@ -40,7 +40,7 @@ export default function Home() {
           </h2>
 
           <div className="flex flex-col gap-4 w-full">
-            {utilities.map((utility, index) => <ToolCard key={utility.id} {...utility}/>)}
+            {utilities.map((utility) => <ToolCard key={utility.id} {...utility}/>)}
           </div>
         </div>
 

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { generateUUID } from "../../utils/UUID/generators";
 import CopyBlock from "@/components/CopyBlock";
-import { buttonStyles } from "@/styles/styles";
 import BackToHome from "@/components/BackToHome";
 
 export default function Page(){
