@@ -4,10 +4,12 @@ import { contributers, utilities } from "../constants/index.js"
 import Footer from "@/components/Footer";
 import SearchInput from "@/components/SearchInput";
 
-export default function Home({ searchParams }: { searchParams?: { [key: string]: string | undefined; } }) {
+export default function Home({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined; } }) {
 
   // TODO: Add a search bar to filter tools
-  const query = searchParams?.query || "";
+  const query = Array.isArray(searchParams.query)
+    ? searchParams.query[0] // If it's an array, take the first item
+    : searchParams.query || '';
 
   const filteredUtilities = utilities.filter((utility) => 
     utility.name.toLowerCase().includes(query.toLowerCase()) ||
