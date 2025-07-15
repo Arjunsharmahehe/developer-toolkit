@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function ToolCard({ name, description, route, contributers }: { name: string; description: string; route: string; contributers?: string[] }) {
     return (
-        <Link href={route} className="w-full hover:translate-x-1 transition-all duration-300 ease-out hover:bg-neutral-50">
+        <Link href={route} className="w-full block hover:translate-x-1 transition-transform duration-1000 will-change-transform ease-in-out">
 
             <h3 className="mb-1 flex items-baseline justify-between">
                 <span className="text-md font-medium">{name}</span>
