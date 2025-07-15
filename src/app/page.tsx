@@ -4,12 +4,14 @@ import { contributers, utilities } from "../constants/index.js"
 import Footer from "@/components/Footer";
 import SearchInput from "@/components/SearchInput";
 
-export default function Home({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined; } }) {
+export default async function Home({ searchParams }: { searchParams: Promise<any> }) {
 
   // TODO: Add a search bar to filter tools
-  const query = Array.isArray(searchParams.query)
-    ? searchParams.query[0] // If it's an array, take the first item
-    : searchParams.query || '';
+  const awaitedSearchParams = await searchParams;
+
+  const query = Array.isArray(awaitedSearchParams.query)
+    ? awaitedSearchParams.query[0] // If it's an array, take the first item
+    : awaitedSearchParams.query || '';
 
   const filteredUtilities = utilities.filter((utility) => 
     utility.name.toLowerCase().includes(query.toLowerCase()) ||
