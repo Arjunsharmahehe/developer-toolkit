@@ -37,7 +37,7 @@ export default function Page(){
     return (
         <main className="bg-white text-neutral-950 pt-4 pb-2 flex flex-col items-center justify-between min-h-screen px-4">
             <div className="flex flex-col items-center justify-center max-w-[500px] w-full mt-36">
-                <BackToHome/>
+                <BackToHome className="mb-12"/>
                 <h2 className={`${HeadingStyles.h2} w-fit mx-auto`}>URL Decoder/Encoder</h2>
                 <p className="text-sm text-neutral-500 mb-6">A simple tool to decode or encode URLs.</p>
                 <div className="w-full flex flex-col items-center">

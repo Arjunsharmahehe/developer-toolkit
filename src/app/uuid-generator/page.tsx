@@ -36,7 +36,7 @@ export default function Page(){
     return (
         <div className="p-4 flex flex-col min-h-screen items-center justify-between">
             <div className="flex flex-col items-center justify-center max-w-[500px] w-full mt-36">
-                <BackToHome className="md:ml-12"/>
+                <BackToHome className="md:ml-12 mb-12"/>
                 <h1 className="text-2xl font-bold mb-4">UUID Generator</h1>
                 <button 
                     onClick={handleGenerateUUID} 

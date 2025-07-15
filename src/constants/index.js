@@ -43,6 +43,15 @@ export const utilities = [
         contributers: [
             "Arjun"
         ]
+    },
+    {
+        id: 6,
+        name: "Prompt Formatter",
+        description: "Format AI prompts to get the best results.",
+        route: "/prompt-formatter",
+        contributers: [
+            "Arjun"
+        ]
     }
 ]
 

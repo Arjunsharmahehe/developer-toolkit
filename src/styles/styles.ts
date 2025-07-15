@@ -21,8 +21,8 @@ export const subHeadingStyles = {
 
 export const textStyles = {
     primary: "text-neutral-900",
-    secondary: "text-neutral-600",
-    muted: "text-neutral-400",
+    secondary: "text-neutral-500",
+    muted: "text-neutral-300",
 }
 
 export const containerStyles = {
