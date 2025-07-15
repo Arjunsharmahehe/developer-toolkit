@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { generateMultipleParagraphs, generateParagraph, generateSentence } from "../../utils/lorem-ipsum/generators";
 import { text } from "stream/consumers";
+import { buttonStyles, HeadingStyles } from "@/styles/styles";
 
 export default function Page(){
 
@@ -41,25 +42,8 @@ export default function Page(){
     return (
         <div className="flex flex-col items-center gap-8 bg-white min-h-screen p-8">
             <div className="flex flex-col max-w-md mx-auto p-6 bg-white text-black rounded-lg shadow-lg gap-3">
-                <h2 className="text-xl font-semibold mb-6 text-gray-800 mx-auto w-fit">Lorem Ipsum</h2>
+                <h2 className={`${HeadingStyles.h2} w-fit mx-auto`}>Lorem Ipsum</h2>
                 <div className="flex flex-col gap-2">
-                    <div className="flex flex-col">
-                        <label htmlFor="sentenceCount"
-                            className="block text-sm font-medium text-gray-700 mb-2"
-                        >
-                            Sentence Count:
-                        </label>
-                        <div className="w-full flex flex-row gap-2 items-center">
-                            <input type="range" min={1} max={20} value={sentenceCount} 
-                                onChange={(e) => setSentenceCount(Number(e.target.value))}
-                                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                            />
-                            <input type="number" min={1} max={20} value={sentenceCount} 
-                                onChange={(e) => setSentenceCount(Number(e.target.value))}
-                                className="w-12 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner" 
-                            />
-                        </div>
-                    </div>
                     <div className="flex flex-col">
                         <label htmlFor="sentenceCount"
                             className="block text-sm font-medium text-gray-700 mb-2"
@@ -73,6 +57,23 @@ export default function Page(){
                             />
                             <input type="number" min={1} max={20} value={avgSentenceLength} 
                                 onChange={(e) => setAvgSentenceLength(Number(e.target.value))}
+                                className="w-12 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner" 
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col">
+                        <label htmlFor="sentenceCount"
+                            className="block text-sm font-medium text-gray-700 mb-2"
+                        >
+                            Sentence Count:
+                        </label>
+                        <div className="w-full flex flex-row gap-2 items-center">
+                            <input type="range" min={1} max={20} value={sentenceCount} 
+                                onChange={(e) => setSentenceCount(Number(e.target.value))}
+                                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                            />
+                            <input type="number" min={1} max={20} value={sentenceCount} 
+                                onChange={(e) => setSentenceCount(Number(e.target.value))}
                                 className="w-12 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner" 
                             />
                         </div>
@@ -99,21 +100,21 @@ export default function Page(){
                 <div className="flex flex-col gap-2 flex-wrap">
                     <h2 className="text-xl font-semibold text-gray-800">Generate:</h2>
                     <div className="flex gap-3">
-                        <button className="flex-1 bg-neutral-200 rounded-md py-2 px-3 hover:bg-neutral-300 transition-colors duration-100 ease" 
+                        <button className={`flex-1 ${buttonStyles.medium} ${buttonStyles.primary}`} 
                                 onClick={() => {
                                     setLoremIpsum(generateSentence(avgSentenceLength))
                                     setTextToCopy(loremIpsum)
                                 }}>
                                     Sentence
                         </button>
-                        <button className="flex-1 bg-neutral-200 rounded-md py-2 px-3 hover:bg-neutral-300 transition-colors duration-100 ease"  
+                        <button className={`flex-1 ${buttonStyles.medium} ${buttonStyles.primary}`}  
                                 onClick={() => {
                                     setLoremIpsum(generateParagraph(sentenceCount, avgSentenceLength))
                                     setTextToCopy(loremIpsum)
                                     }}>
                                         Paragraph
                         </button>
-                        <button className="flex-1 bg-neutral-200 rounded-md py-2 px-3 hover:bg-neutral-300 transition-colors duration-100 ease" 
+                        <button className={`flex-1 ${buttonStyles.medium} ${buttonStyles.primary}`}  
                         onClick={() => setLoremIpsum(manageMultipleParagraphs(avgSentenceLength, sentenceCount, paragraphCount))}>Paragraphs</button>
                     </div>
                 </div>

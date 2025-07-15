@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { generateUUID } from "../../utils/UUID/generators";
+import CopyBlock from "@/components/CopyBlock";
 
 export default function Page(){
     const [uuid, setUUID] = useState("");
@@ -41,15 +42,7 @@ export default function Page(){
                     Generate UUID
                 </button>
                 {uuid && (
-                    <div className="flex flex-col mb-30">
-                        <p className={`${ isCopied ? "text-green-700" : "text-white"} ml-auto px-3`}>Copied</p>
-                        <button
-                            onClick={handleCopy}
-                            className={`px-4 py-3 text-wrap bg-white border-2 border-neutral-200 rounded-md text-black`}
-                        >
-                            {uuid}
-                        </button>
-                    </div>
+                    <CopyBlock isCopied={isCopied} content={uuid} handleCopy={handleCopy} />
                 )}
             </div>
         </div>
