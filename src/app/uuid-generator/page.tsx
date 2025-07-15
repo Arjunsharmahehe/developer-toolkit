@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { generateUUID } from "../../utils/UUID/generators";
 import CopyBlock from "@/components/CopyBlock";
+import { buttonStyles } from "@/styles/styles";
+import BackToHome from "@/components/BackToHome";
 
 export default function Page(){
     const [uuid, setUUID] = useState("");
@@ -34,6 +36,7 @@ export default function Page(){
     return (
         <div className="p-4 flex flex-col min-h-screen items-center">
             <div className="flex flex-col min-h-screen items-center justify-center max-w-[500px] w-full">
+                <BackToHome className="md:ml-12"/>
                 <h1 className="text-2xl font-bold mb-4">UUID Generator</h1>
                 <button 
                     onClick={handleGenerateUUID} 

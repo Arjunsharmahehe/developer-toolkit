@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { generateMultipleParagraphs, generateParagraph, generateSentence } from "../../utils/lorem-ipsum/generators";
-import { text } from "stream/consumers";
 import { buttonStyles, HeadingStyles } from "@/styles/styles";
+import BackToHome from "@/components/BackToHome";
 
 export default function Page(){
 
@@ -42,6 +42,7 @@ export default function Page(){
     return (
         <div className="flex flex-col items-center gap-8 bg-white min-h-screen p-8">
             <div className="flex flex-col max-w-md mx-auto p-6 bg-white text-black rounded-lg shadow-lg gap-3">
+                <BackToHome/>
                 <h2 className={`${HeadingStyles.h2} w-fit mx-auto`}>Lorem Ipsum</h2>
                 <div className="flex flex-col gap-2">
                     <div className="flex flex-col">

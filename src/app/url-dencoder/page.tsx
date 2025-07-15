@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { buttonStyles, HeadingStyles } from "@/styles/styles";
 import CopyBlock from "@/components/CopyBlock";
+import BackToHome from "@/components/BackToHome";
 
 export default function Page(){
 
@@ -35,6 +36,7 @@ export default function Page(){
     return (
         <main className="bg-white text-neutral-950 pt-4 flex items-center justify-center min-h-screen px-4">
             <div className="min-h-screen flex flex-col items-center justify-center max-w-[500px] w-full">
+                <BackToHome/>
                 <h2 className={`${HeadingStyles.h2} w-fit mx-auto`}>URL Decoder/Encoder</h2>
                 <p className="text-sm text-neutral-500 mb-6">A simple tool to decode or encode URLs.</p>
                 <div className="w-full flex flex-col items-center">
