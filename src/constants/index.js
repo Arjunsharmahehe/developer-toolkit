@@ -34,7 +34,16 @@ export const utilities = [
         description: "Generate UUIDs for unique identifiers.",
         route: "/uuid-generator",
         contributers: [
-            "Arjun", "Anushka"
+            "Arjun"
+        ]
+    },
+    {
+        id: 5,
+        name: "URL Decoder/Encoder",
+        description: "Decode and encode URLs for safe transmission.",
+        route: "/url-dencoder",
+        contributers: [
+            "Arjun"
         ]
     }
 ]

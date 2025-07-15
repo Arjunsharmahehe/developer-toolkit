@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import { generateMultipleParagraphs, generateParagraph, generateSentence } from "../../../utils/lorem-ipsum/generators";
+import { generateMultipleParagraphs, generateParagraph, generateSentence } from "../../utils/lorem-ipsum/generators";
 import { text } from "stream/consumers";
 
 export default function Page(){
