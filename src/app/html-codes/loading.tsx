@@ -15,7 +15,14 @@ export default function Loading(){
                 </div>
 
                 <div className="flex flex-col w-full items-baseline gap-3 mt-4">
-                    <p className="max-w-36 animate-pulse w-full h-7 bg-neutral-300 rounded-md"/>
+                    <p className="max-w-36 animate-pulse w-full h-7 bg-neutral-100 rounded-md"/>
+                    <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
+                    <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
+                    <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
+                    <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
+                    <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
+                    <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
+                    <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
                     <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
                     <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
                     <p className="w-full h-10 animate-pulse bg-neutral-100 rounded-md"/>
