@@ -42,12 +42,3 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ q
         </main>
     )
 }
-
-function Row({ name, htmlcode, onClick }: { name: string, htmlcode: string, onClick: () => void }) {
-    return (
-        <div className="text-neutral-950">
-            <div className={`${textStyles.secondary}`}>{name}</div>
-            <button onClick={onClick} className={`${textStyles.primary}`}>{htmlcode}</button>
-        </div>
-    )
-}
