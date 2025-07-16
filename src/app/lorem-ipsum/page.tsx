@@ -5,6 +5,7 @@ import { generateMultipleParagraphs, generateParagraph, generateSentence } from 
 import { buttonStyles, HeadingStyles } from "@/styles/styles";
 import BackToHome from "@/components/BackToHome";
 import Footer from "@/components/Footer";
+import { AlignLeft, AlignCenter, AlignRight, Smartphone } from "lucide-react";
 
 export default function Page(){
 
@@ -127,19 +128,19 @@ export default function Page(){
                     <div className="flex w-full justify-between">
                         <div className="flex">
                             <button onClick={() => setTextAlignment("left")} className={`${ textAlignment === "left" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md  transition-colors duration-100 ease`}>
-                                <img className="h-8 w-8" src={'/icons/align-left.svg'}/>
+                                <AlignLeft className="size-7"/>
                             </button>
                             <button onClick={() => setTextAlignment("center")}  className={`${ textAlignment === "center" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}>
-                                <img className="h-8 w-8" src={'/icons/align-center.svg'}/>
-                                </button>
+                                <AlignCenter className="size-7"/>
+                            </button>
                             <button onClick={() => setTextAlignment("right")} className={`${ textAlignment === "right" ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}>
-                                <img className="h-8 w-8" src={'/icons/align-right.svg'}/>
+                                <AlignRight className="size-7"/>
                             </button>
                         </div>
 
-                        <button className={`${ isMobile ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-0.5 py-0.5 rounded-md transition-colors duration-100 ease`}
+                        <button className={`${ isMobile ? "bg-neutral-200/80 hover:bg-neutral-300/70" : "bg-white hover:bg-neutral-100"} px-1 py-0.5 rounded-md transition-colors duration-100 ease`}
                                 onClick={() => setIsMobile(!isMobile)}>
-                            <img className="h-7 w-7" src={'/icons/mobile.svg'}/>
+                            <Smartphone className="size-7"/>
                         </button>
                     </div>
 
