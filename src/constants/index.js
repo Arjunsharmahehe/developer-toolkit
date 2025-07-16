@@ -52,6 +52,15 @@ export const utilities = [
         contributers: [
             "Arjun"
         ]
+    },
+    {
+        id: 7,
+        name: "HTML Codes",
+        description: "A comprehensive list of HTML codes.",
+        route: "/html-codes",
+        contributers: [
+            "Arjun"
+        ]
     }
 ]
 
