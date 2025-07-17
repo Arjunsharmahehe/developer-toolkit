@@ -3,22 +3,32 @@ import { useState } from 'react';
 import {Trash } from 'lucide-react'; 
 import BackToHome from "@/components/BackToHome";
 import Footer from "@/components/Footer";
-
+import CopyBlock from "@/components/CopyBlock";
+import { buttonStyles } from '@/styles/styles';
 
 function App() {
-  const [Password, setPassword] = useState<string>('');
-  const [numberAllowed, setNumberAllowed] = useState<boolean>(false);
+  const [ password, setPassword] = useState<string>('');
+  const [numberAllowed, setNumberAllowed] = useState<boolean>(true);
   const [length, setLength] = useState<number>(8);
   const [isCopied, setIsCopied] = useState<boolean>(false);
+  const [specialCharsAllowed, setSpecialCharsAllowed] = useState<boolean>(true);
+  const [uppercaseAllowed, setUppercaseAllowed] = useState<boolean>(true);
 
   function GeneratePassword(): void {
     let password = '';
     let idx = 0;
-    let characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*_+-=[]{}|;:,.<>?';
+    let characters = 'abcdefghijklmnopqrstuvwxyz';
 
     if (numberAllowed) {
       characters += '0123456789';
+    }
+
+    if (specialCharsAllowed){
+      characters += '!@#$%^&*()_+[]{}|;:,.<>?';
+    }
+
+    if (uppercaseAllowed) {
+      characters += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     }
 
     for (let i = 0; i < length; i++) {
@@ -30,7 +40,7 @@ function App() {
 
   function handleCopy(): void {
     navigator.clipboard
-      .writeText(Password)
+      .writeText(password)
       .then(() => {
         console.log('Password copied to clipboard');
         setIsCopied(true);
@@ -45,122 +55,70 @@ function App() {
   }
 
   return (
-    <>
-      <div className="flex mx-auto max-w-[500px] flex-col justify-center items-center h-screen bg-white rounded-lg">
-         <BackToHome className="mb-12"/>
-        <h1 className="text-2xl font-semibold mb-1 w-fit mx-auto">
-          Password Generator
-        </h1>
-        <div className="flex flex-row gap-4">
-          <div className="bg-white p-6 text-black rounded-lg">
-            {/* LENGTH CONTROL */}
-            <div className="flex flex-col gap-2 mb-4 w-full">
-              <label
-                htmlFor="length"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Length:
-              </label>
-
-              <div className="flex items-center gap-3">
-                {/* Slider */}
-                <input
-                  type="range"
-                  min={8}
-                  max={32}
-                  value={length}
-                  onChange={(e) => setLength(Number(e.target.value))}
-                  className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-gray-500"
-                />
-
-                {/* Number Input */}
-                <input
-                  type="number"
-                  min={8}
-                  max={32}
-                  value={length}
-                  onChange={(e) => setLength(Number(e.target.value))}
-                  className="w-14 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner"
-                />
-              </div>
-            </div>
-
-            {/* ALLOW NUMBERS */}
-            <div className="flex flex-col justify-between mb-4 w-full">
-              <label className="block text-sm font-medium text-gray-700">
-                Allow Numbers:
-              </label>
-
-              <div className="flex flex-row gap-6 mt-4">
-                {/* No Button */}
-                <button
-                  type="button"
-                  onClick={() => setNumberAllowed(false)}
-                  className={`px-4 py-1 rounded-xl border transition ${
-                    !numberAllowed
-                      ? 'bg-gray-400 text-black border-gray-300'
-                      : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
-                  }`}
+    <div className="p-4 flex flex-col min-h-screen items-center justify-between">
+        <div className="flex flex-col items-center justify-center max-w-[500px] w-full gap-3 mt-36">
+            <BackToHome className="md:ml-12 mb-12"/>
+            <h1 className="text-2xl font-bold mb-2">Password Generator</h1>
+            <div className="flex flex-col w-fit items-baseline">
+                <label htmlFor="sentenceCount"
+                    className="block text-sm font-medium text-gray-700"
                 >
-                  No
+                    Password Length
+                </label>
+                <div className="w-fit flex flex-row gap-2 items-center">
+                    <input type="range" min={8} max={32} value={length} 
+                        onChange={(e) => setLength(Number(e.target.value))}
+                        className="flex-1 h-2 max-w-2xs bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                    />
+                    <input type="number" min={8} max={32} value={length} 
+                        onChange={(e) => setLength(Number(e.target.value))}
+                        className="w-12 text-center px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-200 no-spinner" 
+                    />
+                </div>
+                <div className='flex flex-col mt-4 p-3 rounded-md border-2 border-neutral-200 gap-1 w-full'>
+                  
+                  <label className="flex items-center justify-between gap-2 w-full">
+                    <span className="font-medium">Special Characters</span>
+                    <input
+                        type="checkbox"
+                        checked={specialCharsAllowed}
+                        onChange={(e) => setSpecialCharsAllowed(e.target.checked)}
+                    />
+                </label>
+                <label className="flex items-center justify-between gap-2 w-full">
+                  <span className="font-medium">Numbers</span>
+                    <input
+                        type="checkbox"
+                        checked={numberAllowed}
+                        className='form-checkbox checked:text-green-500 border-gray-300 bg-white checked:border-green-500'
+                        onChange={(e) => setNumberAllowed(e.target.checked)}
+                    />
+                </label>
+                <label className="flex items-center justify-between gap-2 w-full">
+                  <span className="font-medium">Uppercase</span>
+                    <input
+                        type="checkbox"
+                        checked={uppercaseAllowed}
+                        onChange={(e) => setUppercaseAllowed(e.target.checked)}
+                    />
+                </label>
+
+                <button onClick={GeneratePassword}
+                    className={`${buttonStyles.medium} ${buttonStyles.primary} mt-4`}
+                >
+                    Generate Password
                 </button>
 
-                {/* Yes Button */}
-                <button
-                  type="button"
-                  onClick={() => setNumberAllowed(true)}
-                  className={`px-4 py-1 rounded-xl border transition ${
-                    numberAllowed
-                      ? 'bg-gray-400 text-black border-gray-300'
-                      : 'bg-white text-gray-800 border-gray-300 hover:bg-gray-100'
-                  }`}
-                >
-                  Yes
-                </button>
-              </div>
+                </div>
             </div>
-
-            {/* GENERATE PASSWORD BUTTON AND CLEAR BUTTON */}
-            <div className="flex items-center justify-center gap-4 mb-3 mt-8">
-              <button
-                onClick={GeneratePassword}
-                className="rounded-md block text-sm font-medium text-gray-700 py-2 px-3 bg-neutral-200 hover:bg-neutral-300 transition-colors duration-100 ease"
-              >
-                Generate Password
-              </button>
-              <button
-                onClick={() => setPassword('')}
-                className="bg-transparent border-0 p-0 m-0 cursor-pointer"
-                aria-label="Clear Password"
-              >
-                <Trash className='w-5 h-5'  /> 
-              </button>
-            </div>
-          </div>
-        </div>
-        <hr className="border-t border-gray-300 w-full mb-2" />
-
-        <div className="mt-2 mb-2">
-          <h2 className="text-xl font-semibold text-gray-800">Generated:</h2>
-
-          <div
-            onClick={handleCopy}
-            className="relative border border-gray-300 rounded-lg p-4 bg-gray-50 min-h-[100px] w-[400px] cursor-pointer"
-          >
-            {isCopied && (
-              <div className="absolute top-2 right-3 text-green-500 text-sm font-semibold">
-                Copied!
-              </div>
+            
+            {password && (
+                <CopyBlock isCopied={isCopied} content={password} handleCopy={handleCopy} />
             )}
-
-            <div className="text-sm text-gray-800 font-mono break-all">
-              {Password || ''}
-            </div>
-          </div>
         </div>
-        <Footer/> 
-      </div>
-    </>
+
+        <Footer/>
+    </div>
   );
 }
 
