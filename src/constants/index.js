@@ -19,11 +19,11 @@ export const utilities = [
     },
     {
         id: 3,
-        name: "Base64 Encoder/Decoder",
-        description: "Encode and decode Base64 strings.",
-        route: "/base64-encoder-decoder",
+        name: "Password Generator",
+        description: "Generate Strong passwords without any hassle.",
+        route: "/pass-gen",
         contributers: [
-            "Arjun", "Anushka"
+             "Anushka"
         ]
     },
     {
