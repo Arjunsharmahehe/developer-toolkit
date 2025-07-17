@@ -1,6 +1,5 @@
 "use client"
 import { useState } from 'react';
-import {Trash } from 'lucide-react'; 
 import BackToHome from "@/components/BackToHome";
 import Footer from "@/components/Footer";
 import CopyBlock from "@/components/CopyBlock";
