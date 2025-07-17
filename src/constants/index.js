@@ -10,11 +10,11 @@ export const utilities = [
     },
     {
         id: 2,
-        name: "JWT Decoder",
-        description: "Decode and verify JSON Web Tokens.",
-        route: "/jwt-decoder",
+        name: "HTTP Status Codes",
+        description: "A comprehensive list of HTTP status codes with their explanations.",
+        route: "/status-codes",
         contributers: [
-            "Anushka"
+            "Arjun"
         ]
     },
     {
